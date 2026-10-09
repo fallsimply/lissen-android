@@ -3,15 +3,18 @@ package org.grakovne.lissen.ui.screens.player.composable
 import android.view.View
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.SlowMotionVideo
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonGroup
+import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.Text
@@ -20,8 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import org.grakovne.lissen.R
 import org.grakovne.lissen.common.withHaptic
@@ -51,10 +52,18 @@ fun PlaybackSpeedComposable(
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
       ) {
-        Text(
-          text = stringResource(R.string.playback_speed_title),
-          style = typography.bodyLarge,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+          Icon(
+            imageVector = Icons.Outlined.SlowMotionVideo,
+            contentDescription = null,
+            tint = colorScheme.onBackground,
+            modifier = Modifier.size(24.dp),
+          )
+          Text(
+            text = stringResource(R.string.playback_speed_title),
+            style = typography.bodyLarge,
+          )
+        }
 
         PlaybackSpeedSlider(
           speed = currentSpeed,
@@ -66,48 +75,23 @@ fun PlaybackSpeedComposable(
           onSpeedUpdate = onSpeedChange,
         )
 
-        Row(
-          modifier = Modifier.fillMaxWidth(),
-          horizontalArrangement = Arrangement.SpaceEvenly,
+        ButtonGroup(
+          overflowIndicator = { menuState ->
+            ButtonGroupDefaults.OverflowIndicator(menuState = menuState)
+          },
+          horizontalArrangement = ButtonGroupDefaults.HorizontalArrangement,
+          modifier = Modifier.height(ButtonDefaults.MediumContainerHeight),
         ) {
           playbackSpeedPresets.forEach { value ->
-            FilledTonalButton(
-              onClick = {
+            toggleableItem(
+              onCheckedChange = { _ ->
                 withHaptic(view) {
                   onSpeedChange(value)
                 }
               },
-              modifier = Modifier.size(56.dp),
-              shape = CircleShape,
-              colors =
-                ButtonDefaults.filledTonalButtonColors(
-                  containerColor =
-                    if (currentSpeed == value) {
-                      colorScheme.primary
-                    } else {
-                      colorScheme.surfaceContainer
-                    },
-                  contentColor =
-                    if (currentSpeed == value) {
-                      colorScheme.onPrimary
-                    } else {
-                      colorScheme.onSurfaceVariant
-                    },
-                ),
-              contentPadding = PaddingValues(0.dp),
-            ) {
-              Text(
-                text = String.format(Locale.US, "%.1f", value),
-                style =
-                  if (currentSpeed == value) {
-                    typography.labelMedium.copy(fontWeight = FontWeight.Bold)
-                  } else {
-                    typography.labelMedium
-                  },
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-              )
-            }
+              checked = currentSpeed == value,
+              label = String.format(Locale.US, "%.1f", value),
+            )
           }
         }
       }

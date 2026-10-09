@@ -1,5 +1,6 @@
 package org.grakovne.lissen.ui.screens.library.composables
 
+import android.view.RoundedCorner
 import android.view.View
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.SwipeToDismissBox
@@ -146,7 +148,9 @@ fun MiniPlayerComposable(
           Modifier
             .testTag("miniPlayer")
             .fillMaxWidth()
-            .background(colorScheme.background)
+            .padding(8.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(colorScheme.surfaceContainer)
             .semantics(mergeDescendants = true) {
               customActions =
                 listOf(

@@ -88,8 +88,10 @@ fun TrackDetailsComposable(
       imageLoader = imageLoader,
       modifier =
         Modifier
-          .heightIn(max = maxImageHeight)
-          .aspectRatio(1f),
+          // .heightIn(max = maxImageHeight)
+          .aspectRatio(1f)
+          .fillMaxWidth()
+          .padding(16.dp),
     )
 
     Spacer(modifier = Modifier.height(12.dp))

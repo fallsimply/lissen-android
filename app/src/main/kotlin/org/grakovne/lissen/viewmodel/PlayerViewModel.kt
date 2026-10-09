@@ -129,6 +129,7 @@ class PlayerViewModel
 
     fun collapsePlayingQueue() {
       _playingQueueExpanded.value = false
+      dismissSearch()
     }
 
     fun togglePlayingQueue() {

@@ -13,6 +13,7 @@ kotlin = "2.4.21"
 activityCompose = "1.13.0"
 composeBom = "2026.09.00"
 loggingInterceptor = "5.5.1"
+material3 = "1.5.0-alpha23"
 materialVersion = "1.14.0"
 media3Exoplayer = "1.11.1"
 navigationCompose = "2.10.2"
@@ -37,6 +38,7 @@ androidxTestRules = "1.7.0"
 androidxCollection = "1.7.0"
 uiautomator = "2.4.1"
 zip4j = "2.11.6"
+material3Version = "1.0.0-alpha17"
 
 [libraries]
 acra-core = { module = "ch.acra:acra-core", version.ref = "acraCore" }
@@ -73,7 +75,7 @@ androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 hoko-blur = { module = "io.github.hokofly:hoko-blur", version.ref = "hokoBlur" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
@@ -104,6 +106,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-test-uiautomator = { module = "androidx.test.uiautomator:uiautomator", version.ref = "uiautomator" }
 androidx-test-uiautomator-shell = { module = "androidx.test.uiautomator:uiautomator-shell", version.ref = "uiautomator" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltAndroid" }
+androidx-xr-compose-material3-material3 = { group = "androidx.xr.compose.material3", name = "material3", version.ref = "material3Version" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
