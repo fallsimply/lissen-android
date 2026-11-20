@@ -40,7 +40,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -48,6 +47,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -55,6 +55,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
@@ -222,6 +223,14 @@ fun LibraryScreen(
 
   val playingBook by playerViewModel.book.collectAsState()
   val context = LocalContext.current
+  val density = LocalDensity.current
+  var miniPlayerHeightPx by remember { mutableIntStateOf(0) }
+  val miniPlayerBottomPadding =
+    if (playingBook != null) {
+      with(density) { miniPlayerHeightPx.toDp() }
+    } else {
+      0.dp
+    }
 
   fun isRecentVisible(): Boolean {
     val fetchAvailable = networkService.isNetworkAvailable() || cachingModelView.localCacheUsing()
@@ -373,19 +382,6 @@ fun LibraryScreen(
         modifier = Modifier.systemBarsPadding(),
       )
     },
-    bottomBar = {
-      playingBook?.let {
-        Surface(shadowElevation = 4.dp) {
-          MiniPlayerComposable(
-            navController = navController,
-            book = it,
-            imageLoader = imageLoader,
-            playerViewModel = playerViewModel,
-            libraryType = it.libraryType ?: preferredLibrary?.type,
-          )
-        }
-      }
-    },
     modifier =
       Modifier
         .testTag("libraryScreen")
@@ -426,7 +422,12 @@ fun LibraryScreen(
                 totalItems = libraryCount,
                 ignoreItems = listOf("recent_books", "library_title"),
               ),
-          contentPadding = PaddingValues(horizontal = 16.dp),
+          contentPadding =
+            PaddingValues(
+              start = 16.dp,
+              end = 16.dp,
+              bottom = miniPlayerBottomPadding,
+            ),
           horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
           item(key = "recent_books", span = { GridItemSpan(maxLineSpan) }) {
@@ -613,6 +614,21 @@ fun LibraryScreen(
             contentColor = colorScheme.primary,
             backgroundColor = colorScheme.surfaceContainer,
             modifier = Modifier.align(Alignment.TopCenter),
+          )
+        }
+
+        playingBook?.let { book ->
+          MiniPlayerComposable(
+            navController = navController,
+            book = book,
+            imageLoader = imageLoader,
+            playerViewModel = playerViewModel,
+            libraryType = book.libraryType ?: preferredLibrary?.type,
+            modifier =
+              Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .onSizeChanged { miniPlayerHeightPx = it.height },
           )
         }
       }

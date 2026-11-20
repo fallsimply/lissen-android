@@ -13,7 +13,7 @@
     <string name="player_screen_chapter_list_navigation_library">თავები</string>
     <string name="player_screen_library_playing_title">თავების დაკვრა</string>
     <string name="player_screen_podcast_playing_title">ეპიზოდების დაკვრა</string>
-    <string name="player_screen_now_playing_title_chapter_of">თავი %1$d %2$s-დან</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d / %3$s)</string>
     <string name="player_screen_now_playing_title_podcast_of">ეპიზოდი %1$d %2$s-დან</string>
     <string name="settings_screen_title">მორგება</string>
     <string name="settings_screen_connected_as_title">დაკავშირებულია როგორც</string>

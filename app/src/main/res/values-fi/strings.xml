@@ -77,7 +77,7 @@
     <string name="continue_playback_shortcut_title">Jatka</string>
     <string name="continue_playback_shortcut_description">Jatka kuuntelua</string>
     <string name="login_screen_connect_button_text">Yhdistä</string>
-    <string name="player_screen_now_playing_title_chapter_of">Luku %1$d / %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d / %3$s)</string>
     <string name="color_scheme_light">Vaalea</string>
     <string name="login_error_host_url_shall_be_https_or_http">Palvelimen URL-osoitteen alun tulisi olla https:// tai http://</string>
     <string name="settings_screen_custom_header_hint">Määrittele palvelinyhteyden mukautetut HTTP-otsakkeet</string>

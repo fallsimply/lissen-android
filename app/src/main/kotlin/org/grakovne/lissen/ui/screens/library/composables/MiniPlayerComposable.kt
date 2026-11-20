@@ -77,6 +77,7 @@ fun MiniPlayerComposable(
   imageLoader: ImageLoader,
   playerViewModel: PlayerViewModel,
   libraryType: LibraryType?,
+  modifier: Modifier = Modifier,
 ) {
   val view: View = LocalView.current
 
@@ -113,6 +114,7 @@ fun MiniPlayerComposable(
   }
 
   SwipeToDismissBox(
+    modifier = modifier,
     state = dismissState,
     backgroundContent = {
       Row(
@@ -298,7 +300,7 @@ private fun PlaybackButton(
         modifier = Modifier.size(28.dp),
         strokeWidth = 28.dp * 0.1f,
         color = colorScheme.primary,
-        trackColor = colorScheme.onBackground,
+        trackColor = colorScheme.primary.copy(alpha = .6f),
         strokeCap = StrokeCap.Butt,
         gapSize = 2.dp,
       )

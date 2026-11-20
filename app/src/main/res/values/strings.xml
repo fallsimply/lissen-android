@@ -41,7 +41,7 @@
     <string name="player_screen_chapter_list_navigation_podcast">Episodes</string>
     <string name="player_screen_library_playing_title">Playing chapters</string>
     <string name="player_screen_podcast_playing_title">Playing episodes</string>
-    <string name="player_screen_now_playing_title_chapter_of">Chapter %1$d of %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d of %3$s)</string>
     <string name="player_screen_now_playing_title_podcast_of">Episode %1$d of %2$s</string>
     <string name="settings_screen_title">Preferences</string>
     <string name="settings_screen_connected_as_title">Connected as</string>
@@ -256,7 +256,7 @@
     <string name="settings_screen_client_cert_title">Client certificate</string>
     <string name="settings_screen_client_cert_hint">Use a client certificate for mTLS</string>
     <string name="settings_screen_client_cert_empty_state_title">No client certificate selected</string>
-    `<string name="settings_screen_client_cert_install_help_description">Import the certificate file via the security or VPN section in your device system settings</string>`
+    <string name="settings_screen_client_cert_install_help_description">Import the certificate file via the security or VPN section in your device system settings</string>
     <string name="settings_screen_client_cert_selected_label">Selected certificate</string>
     <string name="settings_screen_client_cert_choose_action">Choose certificate</string>
     <string name="settings_screen_client_cert_remove_action">Remove certificate</string>

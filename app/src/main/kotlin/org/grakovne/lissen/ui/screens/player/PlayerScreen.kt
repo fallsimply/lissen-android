@@ -85,7 +85,6 @@ import org.grakovne.lissen.ui.screens.player.composable.placeholder.BookCoverPla
 import org.grakovne.lissen.ui.screens.player.composable.placeholder.ChapterNumberPlaceholder
 import org.grakovne.lissen.ui.screens.player.composable.placeholder.NavigationBarPlaceholderComposable
 import org.grakovne.lissen.ui.screens.player.composable.placeholder.PlayingQueuePlaceholderComposable
-import org.grakovne.lissen.ui.screens.player.composable.placeholder.TrackControlPlaceholderComposable
 import org.grakovne.lissen.ui.screens.player.composable.placeholder.TrackDetailsPlaceholderComposable
 import org.grakovne.lissen.ui.screens.player.composable.primaryAuthorName
 import org.grakovne.lissen.ui.screens.player.composable.provideChapterNumberTitle
@@ -474,18 +473,11 @@ private fun PlayerArtworkAndControls(
       )
     }
 
-    if (!isPlaybackReady) {
-      TrackControlPlaceholderComposable(
-        modifier = Modifier,
-        seekTime = seekTime,
-      )
-    } else {
-      TrackControlComposable(
-        viewModel = playerViewModel,
-        modifier = Modifier,
-        seekTime = seekTime,
-      )
-    }
+    TrackControlComposable(
+      viewModel = playerViewModel,
+      seekTime = seekTime,
+      enabled = isPlaybackReady,
+    )
   }
 }
 
@@ -573,18 +565,11 @@ private fun PlayerArtworkAndControlsWide(
 
     Spacer(modifier = Modifier.height(8.dp))
 
-    if (isPlaybackReady) {
-      TrackControlComposable(
-        viewModel = playerViewModel,
-        modifier = Modifier,
-        seekTime = seekTime,
-      )
-    } else {
-      TrackControlPlaceholderComposable(
-        modifier = Modifier,
-        seekTime = seekTime,
-      )
-    }
+    TrackControlComposable(
+      viewModel = playerViewModel,
+      seekTime = seekTime,
+      enabled = isPlaybackReady,
+    )
   }
 }
 

@@ -13,7 +13,7 @@
     <string name="player_screen_chapter_list_navigation_library">Poglavlja</string>
     <string name="player_screen_library_playing_title">Trenutna poglavlja</string>
     <string name="player_screen_podcast_playing_title">Reproduciranje epizoda</string>
-    <string name="player_screen_now_playing_title_chapter_of">Poglavlje %1$d od %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d od %3$s)</string>
     <string name="player_screen_now_playing_title_podcast_of">Epizoda %1$d od %2$s</string>
     <string name="settings_screen_title">Korisničke postavke</string>
     <string name="settings_screen_connected_as_title">Spojen kao</string>

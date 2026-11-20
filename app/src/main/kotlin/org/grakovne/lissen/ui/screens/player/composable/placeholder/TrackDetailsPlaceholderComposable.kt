@@ -100,7 +100,7 @@ fun TrackDetailsPlaceholderComposable(
 @Composable
 fun ChapterNumberPlaceholder(modifier: Modifier = Modifier) {
   Text(
-    text = stringResource(R.string.player_screen_now_playing_title_chapter_of, 100, "1000"),
+    text = stringResource(R.string.player_screen_now_playing_title_chapter_of, "Chapter", 100, "1000"),
     style = typography.bodyMedium,
     color = Color.Transparent,
     textAlign = TextAlign.Center,

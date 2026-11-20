@@ -93,7 +93,7 @@
     <string name="login_screen_open_id_button">الاتصال باستخدام OpenID</string>
     <string name="settings_screen_library_ordering_modification_date_option">تاريخ التحديث</string>
     <string name="player_screen_podcast_playing_title">تشغيل الحلقات</string>
-    <string name="player_screen_now_playing_title_chapter_of">الفصل %1$d من %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d من %3$s)</string>
     <string name="login_error_connection_error">خطأ في الاتصال</string>
     <string name="show_downloaded_content_only">التي تم تنزيلها فقط</string>
     <string name="the_library_is_empty">المكتبة فارغة</string>

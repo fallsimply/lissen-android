@@ -13,7 +13,7 @@
     <string name="player_screen_chapter_list_navigation_library">챕터</string>
     <string name="player_screen_library_playing_title">재생중인 챕터</string>
     <string name="player_screen_podcast_playing_title">재생중인 에피소드</string>
-    <string name="player_screen_now_playing_title_chapter_of">챕터 %1$d / %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d / %3$s)</string>
     <string name="player_screen_now_playing_title_podcast_of">에피소드 %1$d/%2$s</string>
     <string name="settings_screen_title">설정</string>
     <string name="settings_screen_connected_as_title">사용자</string>

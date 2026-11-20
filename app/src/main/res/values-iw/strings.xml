@@ -14,7 +14,7 @@
     <string name="player_screen_chapter_list_navigation_podcast">פרקים</string>
     <string name="player_screen_library_playing_title">פרקים מתנגנים</string>
     <string name="player_screen_podcast_playing_title">פרקים מתנגנים</string>
-    <string name="player_screen_now_playing_title_chapter_of">פרק %1$d מתוך %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d מתוך %3$s)</string>
     <string name="player_screen_now_playing_title_podcast_of">פרק %1$d מתוך %2$s</string>
     <string name="settings_screen_title">העדפות</string>
     <string name="settings_screen_connected_as_title">מחובר בתור</string>

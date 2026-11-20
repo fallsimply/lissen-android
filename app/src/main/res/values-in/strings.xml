@@ -14,7 +14,7 @@
     <string name="player_screen_chapter_list_navigation_podcast">Episode</string>
     <string name="player_screen_library_playing_title">Memutar segmen</string>
     <string name="player_screen_podcast_playing_title">Memutar episode</string>
-    <string name="player_screen_now_playing_title_chapter_of">Segmen %1$d dari %2$s</string>
+    <string name="player_screen_now_playing_title_chapter_of">%1$s (%2$d dari %3$s)</string>
     <string name="player_screen_now_playing_title_podcast_of">Episode %1$d dari %2$s</string>
     <string name="settings_screen_title">Preferensi</string>
     <string name="settings_screen_connected_as_title">Terhubung sebagai</string>

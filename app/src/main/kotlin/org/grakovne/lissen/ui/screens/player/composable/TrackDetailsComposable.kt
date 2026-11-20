@@ -22,9 +22,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -59,7 +61,7 @@ fun BookCover(
     imageLoader = imageLoader,
     contentDescription = null,
     contentScale = ContentScale.FillBounds,
-    modifier = modifier.clip(RoundedCornerShape(8.dp)),
+    modifier = modifier.clip(RoundedCornerShape(12.dp)),
     error = painterResource(R.drawable.cover_fallback),
   )
 }
@@ -77,7 +79,7 @@ fun TrackDetailsComposable(
   val context = LocalContext.current
 
   val configuration = LocalConfiguration.current
-  val maxImageHeight = configuration.screenHeightDp.dp * 0.33f
+  val maxImageHeight = LocalWindowInfo.current.containerSize.height * 0.33f
 
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -91,15 +93,15 @@ fun TrackDetailsComposable(
           // .heightIn(max = maxImageHeight)
           .aspectRatio(1f)
           .fillMaxWidth()
-          .padding(16.dp),
+          .padding(24.dp),
     )
 
     Spacer(modifier = Modifier.height(12.dp))
 
     Text(
       text = book?.title.orEmpty(),
-      style = typography.headlineSmall,
-      fontWeight = FontWeight.SemiBold,
+      style = typography.headlineSmall.copy(lineBreak = LineBreak.Heading),
+      fontWeight = FontWeight.Bold,
       color = colorScheme.onBackground,
       textAlign = TextAlign.Center,
       overflow = TextOverflow.Ellipsis,
@@ -161,6 +163,7 @@ fun provideChapterNumberTitle(
     LibraryType.LIBRARY -> {
       context.getString(
         R.string.player_screen_now_playing_title_chapter_of,
+        book?.chapters?.getOrNull(currentTrackIndex)?.title.orEmpty(),
         currentTrackIndex + 1,
         book?.chapters?.size ?: "?",
       )
